@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongodb
+  namespace: roboshop
   labels:
     app: mongodb
     tier: db
@@ -16,19 +17,21 @@ spec:
       project: roboshop
   template: # from here onwards pod definition starts
     metadata:
+      namespace: roboshop
       labels:
         app: mongodb
         tier: db
         project: roboshop
     spec:
       containers:
-      - name: nginx
+      - name: mongodb
         image: shaiksuhail2767/mongodb:1.0.0
 ---
   apiVersion: v1
   kind: Service
   metadata:
     name: mongodb
+    namespace: roboshop
   spec:
     selector:
       app: mongodb
