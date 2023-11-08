@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  labels:
+    app: mongodb
+    tier: db
+    project: roboshop
+spec:
+  # modify replicas according to your case
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+      tier: db
+      project: roboshop
+  template: # from here onwards pod definition starts
+    metadata:
+      labels:
+        app: mongodb
+        tier: db
+        project: roboshop
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
