@@ -141,6 +141,13 @@ spec:
       containers:
       - name: web
         image: shaiksuhail2767/web:1.0.0
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "68Mi"
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
         volumeMounts:
         - name: nginx-conf # name of the volume you created above
           mountPath: /etc/nginx/nginx.conf
